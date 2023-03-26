@@ -14,7 +14,11 @@ else
 fi
 
 # Automatically load autojump on login.
-. /usr/share/autojump/autojump.sh
+if [ command -v /usr/share/autojump/autojump.sh &> /dev/null ]; then
+    . /usr/share/autojump/autojump.sh
+fi
 
 # Automatically run neofetch on login.
-neofetch
+if [ command -v neofetch &> /dev/null ]; then
+    neofetch
+fi
