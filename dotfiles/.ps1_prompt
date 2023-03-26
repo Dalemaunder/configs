@@ -1,4 +1,6 @@
-# Git status functionality sourced from: https://coderwall.com/p/pn8f0g/show-your-git-status-and-branch-in-color-at-the-command-prompt
+# Author: Dale Maunder, 2023
+# Base code for the git status functionality sourced from: https://coderwall.com/p/pn8f0g/show-your-git-status-and-branch-in-color-at-the-command-prompt
+# Made heavy usage of: https://bashrcgenerator.com/
 
 
 COLOR_RED="\033[0;31m"
@@ -6,9 +8,6 @@ COLOR_ORANGE="\033[38;5;208m"
 COLOR_YELLOW="\033[0;33m"
 COLOR_GREEN="\033[0;32m"
 COLOR_OCHRE="\033[38;5;95m"
-COLOR_BLUE="\033[0;34m"
-COLOR_WHITE="\033[0;37m"
-COLOR_RESET="\033[0m"
 
 function git_color {
   local git_status="$(git status 2> /dev/null)"
@@ -41,7 +40,7 @@ function git_branch {
 }
 
 PS1="\[\033[38;5;196m\][\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;112m\]@\[$(tput sgr0)\]\[\033[38;5;31m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;163m\]\w\[$(tput sgr0)\]"
-PS1+="\[\$(git_color)\]"        # colors git status
-PS1+="\$(git_branch)"           # prints current branch
+PS1+="\[\$(git_color)\]"
+PS1+="\$(git_branch)"
 PS1+="\[\033[38;5;196m\]]\[$(tput sgr0)\]"
 export PS1
