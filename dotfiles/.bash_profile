@@ -7,6 +7,12 @@ if [ -f ~/.bash_custom ]; then
         . ~/.bash_custom
 fi
 
+if [ -f ~/.ps1_prompt ]; then
+	. ~/.ps1_prompt
+else
+	PS1="\[\033[38;5;196m\][\[$(tput sgr0)\]\[\033[38;5;214m\]\u\[$(tput sgr0)\]\[\033[38;5;112m\]@\[$(tput sgr0)\]\[\033[38;5;31m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;163m\]\w\[$(tput sgr0)\]\[\033[38;5;196m\]]\[$(tput sgr0)\]"
+fi
+
 # Automatically load autojump on login.
 . /usr/share/autojump/autojump.sh
 
