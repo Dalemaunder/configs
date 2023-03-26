@@ -14,7 +14,7 @@ function git_color {
 
   if [[ $git_status =~ "Untracked files" ]]; then
     echo -e $COLOR_RED
-  if [[ $git_status =~ "Changes not staged for commit" ]]; then
+  elif [[ $git_status =~ "Changes not staged for commit" ]]; then
     echo -e $COLOR_RED
   elif [[ $git_status =~ "Changes to be committed" ]]; then
     echo -e $COLOR_ORANGE
