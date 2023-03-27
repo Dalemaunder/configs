@@ -18,7 +18,13 @@ fi
 
 # ===[ Auto-run programs ]===
 # Automatically load autojump on login.
-. /usr/share/autojump/autojump.sh
+if [ $(command -v /usr/share/autojump/autojump.sh) ]; then
+    . /usr/share/autojump/autojump.sh
+fi
 
 # Automatically run neofetch on login.
-neofetch
+if [ $(command -v neofetch) ]; then
+    neofetch
+else
+    echo "No neofetch"
+fi
