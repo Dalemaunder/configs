@@ -25,6 +25,4 @@ fi
 # Automatically run neofetch on login.
 if [ $(command -v neofetch) ]; then
     neofetch
-else
-    echo "No neofetch"
 fi
