@@ -14,11 +14,13 @@ else
 fi
 
 # Automatically load autojump on login.
-if [ command -v /usr/share/autojump/autojump.sh &> /dev/null ]; then
+if [ $(command -v /usr/share/autojump/autojump.sh) ]; then
     . /usr/share/autojump/autojump.sh
 fi
 
 # Automatically run neofetch on login.
-if [ command -v neofetch &> /dev/null ]; then
+if [ $(command -v neofetch) ]; then
     neofetch
+else
+    echo "No neofetch"
 fi
