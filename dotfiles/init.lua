@@ -41,6 +41,7 @@ require("gitsigns").setup()
 require("nvim-highlight-colors").setup()
 
 --[ Language Servers ]--
+-- Only load Powershell if on a Windows device
 if package.config:sub(1,1) == "\\" then
     require("lspconfig").powershell_es.setup {
 	bundle_path = 'C:\\Users\\Dale\\Documents\\Programming\\LSP Files\\PowerShellEditorServices',
@@ -62,7 +63,6 @@ vim.opt.relativenumber = true
 
 -- Configure the colorscheme
 vim.cmd[[colorscheme kanagawa]]
---vim.cmd [[colorscheme slate]]
 vim.cmd [[set background=dark]]
 
 -- Configure tab settings
