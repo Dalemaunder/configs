@@ -23,7 +23,6 @@ function git_color {
   elif [[ $git_status =~ "nothing to commit" ]]; then
     echo -e $COLOR_GREEN
   else
-    echo "Ochre prompt! Something is wrong with the git status!"
     echo -e $COLOR_OCHRE
   fi
 }
