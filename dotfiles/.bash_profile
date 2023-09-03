@@ -3,10 +3,6 @@ if [ -f ~/.bashrc ]; then
         . ~/.bashrc
 fi
 
-if [ -f ~/.bash_custom ]; then
-        . ~/.bash_custom
-fi
-
 # ===[ Auto-run programs ]===
 # Automatically load autojump on login.
 if [ $(command -v /usr/share/autojump/autojump.sh) ]; then
@@ -17,3 +13,4 @@ fi
 if [ $(command -v neofetch) ]; then
     neofetch
 fi
+. "$HOME/.cargo/env"

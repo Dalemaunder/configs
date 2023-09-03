@@ -22,7 +22,7 @@ require('packer').startup(function()
   use 'lewis6991/gitsigns.nvim'
   use {
       'nvim-lualine/lualine.nvim', -- Statusline plugin
-      requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true}
   }
   use {
       'nvim-treesitter/nvim-treesitter', -- Code highlighting
@@ -32,6 +32,7 @@ require('packer').startup(function()
 
   -- Themes
   use "rebelot/kanagawa.nvim"
+  use { "catppuccin/nvim", as = "catppuccin" }
 end)
 
 ---[ Plugin requires ]---
@@ -39,18 +40,22 @@ require("nvim-tree").setup()
 require("scrollbar").setup()
 require("gitsigns").setup()
 require("nvim-highlight-colors").setup()
-
---[ Language Servers ]--
--- Only load Powershell if on a Windows device
-if package.config:sub(1,1) == "\\" then
-    require("lspconfig").powershell_es.setup {
-	bundle_path = 'C:\\Users\\Dale\\Documents\\Programming\\LSP Files\\PowerShellEditorServices',
+require("lualine").setup({
+    options = {
+	theme = "catppuccin"
     }
-end
+})
 
 require("lsp_lines").setup()
 require("rust-tools").setup()
 require("lualine").setup()
+require("catppuccin").setup({
+    integrations = {
+	gitsigns = true,
+	nvimtree = true,
+	treesitter = true,
+    }
+})
 
 
 
@@ -62,7 +67,11 @@ vim.opt.syntax = "on"
 vim.opt.relativenumber = true
 
 -- Configure the colorscheme
-vim.cmd[[colorscheme kanagawa]]
+--vim.cmd[[colorscheme kanagawa]]
+vim.cmd[[colorscheme catppuccin-mocha]]
+--vim.cmd.colorscheme "catppuccin-macchiato"
+--vim.cmd.colorscheme "catppuccin-frappe"
+--vim.cmd.colorscheme "catppuccin-latte"
 vim.cmd [[set background=dark]]
 
 -- Configure tab settings
@@ -131,5 +140,5 @@ vim.keymap.set ("n", "<Leader>j", ":horizontal resize -2<CR>")
 vim.keymap.set ("n", "<Leader>k", ":horizontal resize +2<CR>")
 
 -- Split creation
-vim.keymap.set ("n", "<Leader>s", ":split<CR>")
+vim.keymap.set ("n", "<Leader>h", ":split<CR>")
 vim.keymap.set ("n", "<Leader>v", ":vsplit<CR>")
