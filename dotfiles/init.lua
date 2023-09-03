@@ -9,6 +9,8 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
 
+  use 'tpope/vim-sensible'
+
   -- LSP
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use "ErichDonGubler/lsp_lines.nvim" -- Error/message 
