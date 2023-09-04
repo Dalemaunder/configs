@@ -13,7 +13,7 @@ require('packer').startup(function()
 
   -- LSP
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-  use "ErichDonGubler/lsp_lines.nvim" -- Error/message 
+  use 'ErichDonGubler/lsp_lines.nvim' -- Error/message 
   use 'simrat39/rust-tools.nvim' -- Rust LSP configuration 
   use 'neomake/neomake' -- Linting
 
@@ -34,7 +34,7 @@ require('packer').startup(function()
   use 'petertriho/nvim-scrollbar'
 
   -- Themes
-  use "rebelot/kanagawa.nvim"
+  use 'rebelot/kanagawa.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
 end)
 
@@ -51,6 +51,7 @@ require("lualine").setup({
 
 require("lsp_lines").setup()
 require("rust-tools").setup()
+--require("lspconfig").rust_analyzer.setup({})
 require("lualine").setup()
 require("catppuccin").setup({
     integrations = {
