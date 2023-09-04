@@ -15,6 +15,7 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use "ErichDonGubler/lsp_lines.nvim" -- Error/message 
   use 'simrat39/rust-tools.nvim' -- Rust LSP configuration 
+  use 'neomake/neomake' -- Linting
 
   -- Visual tools
   use 'unblevable/quick-scope' -- Plugin to hilight fastest jumps to words
@@ -66,14 +67,12 @@ require("catppuccin").setup({
 vim.opt.syntax = "on"
 
 -- Turn on relative line numbers
+vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Configure the colorscheme
 --vim.cmd[[colorscheme kanagawa]]
 vim.cmd[[colorscheme catppuccin-mocha]]
---vim.cmd.colorscheme "catppuccin-macchiato"
---vim.cmd.colorscheme "catppuccin-frappe"
---vim.cmd.colorscheme "catppuccin-latte"
 vim.cmd [[set background=dark]]
 
 -- Configure tab settings
@@ -107,7 +106,13 @@ vim.cmd [[set vb t_vb=d()]]
 -- Turn off inline error/help messages; Covered by lsp_lines
 vim.diagnostic.config({virtual_text = false})
 
+-- Configure folding
+vim.opt.foldcolumn = '3'
+vim.opt.foldmethod = "indent"
 
+----[ Neomake Configuration ]----
+-- When writing a buffer (no delay), and on normal mode changes (after 750ms).
+vim.cmd [[call neomake#configure#automake('nrwi', 500)]]
 
 ----[ Keybinding Configuration ]----
 -- Set Leader key
