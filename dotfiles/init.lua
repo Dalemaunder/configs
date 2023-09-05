@@ -4,39 +4,46 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 ----[ Package Manager ]----
----[ Plugin Installation ]---
-local use = require('packer').use
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Package manager
+-- Define the location of lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- Install if not found
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-  use 'tpope/vim-sensible'
+-- Plugin installation specification
+require("lazy").setup({
+    'tpope/vim-sensible',
 
-  -- LSP
-  use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
-  use 'ErichDonGubler/lsp_lines.nvim' -- Error/message 
-  use 'simrat39/rust-tools.nvim' -- Rust LSP configuration 
-  use 'neomake/neomake' -- Linting
+    -- LSP config
+    'neovim/nvim-lspconfig', -- Configurations for Nvim LSP
+    'ErichDonGubler/lsp_lines.nvim', -- Errors/Messages
+    'simrat39/rust-tools.nvim', -- Rust LSP configuration
+    'neomake/neomake', -- Linting
 
-  -- Visual tools
-  use 'unblevable/quick-scope' -- Plugin to hilight fastest jumps to words
-  use 'brenoprata10/nvim-highlight-colors' -- Inline hex colour codes preview plugin
-  use 'nvim-tree/nvim-tree.lua' -- File explorer plugin
-  use 'nvim-tree/nvim-web-devicons' -- File explorer plugin
-  use 'lewis6991/gitsigns.nvim'
-  use {
-      'nvim-lualine/lualine.nvim', -- Statusline plugin
-      requires = { 'nvim-tree/nvim-web-devicons', opt = true}
-  }
-  use {
-      'nvim-treesitter/nvim-treesitter', -- Code highlighting
-      run = ':TSUpdate'
-  }
-  use 'petertriho/nvim-scrollbar'
+    -- Visual tools
+    'unblevable/quick-scope', -- Plugin to highlight fastest jumps to words
+    'brenoprata10/nvim-highlight-colors', -- Inline hex colour codes previw
+    'nvim-tree/nvim-tree.lua', -- File explorer plugin
+    'nvim-tree/nvim-web-devicons', -- Text icons
+    'lewis6991/gitsigns.nvim', -- Git-related text icons
+    'nvim-lualine/lualine.nvim', -- Bottom-of-screen status bar
+    {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"}, -- Code highlighting
+    'petertriho/nvim-scrollbar', -- Right-side scrollbar for filesize context
 
-  -- Themes
-  use 'rebelot/kanagawa.nvim'
-  use { "catppuccin/nvim", as = "catppuccin" }
-end)
+
+    -- Themes
+    'rebelot/kanagawa.nvim',
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+})
 
 ---[ Plugin requires ]---
 require("nvim-tree").setup()
