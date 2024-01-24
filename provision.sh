@@ -11,7 +11,7 @@ HOME="/home/$(whoami)"
 # Create the .config folder if one doesn't already exist. 
 if [ ! -d ~/.config ]; then
     echo "No .config directory found; Creating one in the user's home directory."
-    mkdir -p ~/.config;
+    mkdir ~/.config;
 fi
 
 # Create the Applications folder in the user's home directory if one doesn't already exist.
@@ -21,7 +21,7 @@ if [ ! -d "$HOME/Applications" ]; then
 fi
 
 
-# Create symlinks of the dotfiles in their correct locations (Create parent folders if they don't exist).
+# Create links of the dotfiles in their correct locations (Create parent folders if they don't exist).
 # Vim
 ln -s "./dotfiles/.vimrc" "$HOME/.vimrc"
 # Bash
@@ -32,21 +32,21 @@ if [ -f "$HOME/.bashrc" ]; then
     read -rp "A .bashrc file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	rm "$HOME/.bashrc"
-	ln -s "./dotfiles/.bashrc" "$HOME/.bashrc"
+	ln "./dotfiles/.bashrc" "$HOME/.bashrc"
     else
 	echo "Leaving the pre-existing .bashrc alone."
     fi
 else
-    ln -s "./dotfiles/.bashrc" "$HOME/.bashrc"
+    ln "./dotfiles/.bashrc" "$HOME/.bashrc"
 fi
 
-ln -s "./dotfiles/.bash_profile" "$HOME/.bash_profile"
-ln -s "./dotfiles/.ps1_prompt" "$HOME/.ps1_prompt"
+ln "./dotfiles/.bash_profile" "$HOME/.bash_profile"
+ln "./dotfiles/.ps1_prompt" "$HOME/.ps1_prompt"
 # Htop
 if [ ! -d "$HOME/.config/htop" ]; then
-  mkdir -p "$HOME/.config/htop";
+  mkdir "$HOME/.config/htop";
 fi
-ln -s "./dotfiles/.htoprc" "$HOME/.config/htop/htoprc"
+ln "./dotfiles/.htoprc" "$HOME/.config/htop/htoprc"
 
 
 # Install NeoVim (If not already present)
