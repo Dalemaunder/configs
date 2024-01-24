@@ -79,11 +79,11 @@ fi
 if [ ! -d "$HOME/.config/htop" ]; then
   mkdir "$HOME/.config/htop";
 fi
-if [ -f "$HOME/.htoprc" ]; then
-    read -rp "A .htoprc file already exists; Would you like to overwrite it? [y/n]: " confirm 
+if [ -f "$HOME/.config/htop/htoprc" ]; then
+    read -rp "A htoprc file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	rm "$HOME/.config/htop/htoprc"
-	ln "./dotfiles/.htoprc" "$HOME/.htoprc"
+	ln "./dotfiles/.htoprc" "$HOME/.config/htop/htoprc"
     else
 	echo "Leaving the pre-existing .htoprc alone."
     fi
@@ -96,6 +96,7 @@ fi
 # Install NeoVim (If not already present)
 # Clone the config repo
 if [ ! -d "$HOME/.config/nvim" ]; then
+    echo "Downloading the nvim config from GitHub..."
     git clone https://github.com/Dalemaunder/nvim.git "$HOME/.config/nvim"
 fi
 
