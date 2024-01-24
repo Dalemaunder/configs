@@ -26,7 +26,7 @@ fi
 ln -s "./dotfiles/.vimrc" "$HOME/.vimrc"
 # Bash
 
-if [ ! -f "$HOME/.bashrc" ]; then
+if [ -f "$HOME/.bashrc" ]; then
     # .bashrc files are sacred; Don't bloody touch them without explicit permission.
     # If this script is being used, it's likely that the pre-existing .bashrc is just the distro default.
     read -rp "A .bashrc file already exists; Would you like to overwrite it? [y/n]: " confirm 
