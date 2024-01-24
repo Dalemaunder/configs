@@ -13,14 +13,6 @@ alias whatismyip="curl ipv4.icanhazip.com ; curl ipv6.icanhazip.com"
 alias egrep="grep -E"
 alias frep="grep -F"
 
-# Exports:
-# Set vim to always be the default editor
-export EDITOR="nvim" 
-# Proper terminal colours
-export TERM=xterm-256color
-
-export HISTCONTROL=ignoreboth:erasedups
-
 # Loads the script for the advanced PS1 prompt (Git integration) if it exists, else it loads the base custom prompt.
 if [ -f ~/.ps1_prompt ]; then
 	. ~/.ps1_prompt
