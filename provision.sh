@@ -8,7 +8,7 @@ fi
 
 HOME="/home/$(whoami)"
 
-# Create the .config folder if it doesn't exist. 
+# Create the .config folder if one doesn't already exist. 
 if [ ! -d ~/.config ]; then
     echo "No .config directory found; Creating one in the user's home directory."
     mkdir -p ~/.config;
@@ -19,6 +19,7 @@ if [ ! -d "$HOME/Applications" ]; then
     echo "No Applications directory found; Creating one in the user's home directory."
     mkdir "$HOME/Applications"
 fi
+
 
 # Create symlinks of the dotfiles in their correct locations (Create parent folders if they don't exist).
 # Vim
@@ -50,8 +51,8 @@ REPO="neovim/neovim"; \
     | wget --show-progress -qi - \
     || echo "-> Could not download the latest version of '${REPO}' for your architecture."
 
-echo "Installing the appimage..."
 # Move the appimage to the user's home Applications folder and make it executable.
+echo "Installing the appimage..."
 mv "nvim.appimage" "$HOME/Applications/nvim"
 chmod +x "$HOME/Applications/nvim"
 
