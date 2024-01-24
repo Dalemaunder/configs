@@ -13,7 +13,3 @@ fi
 if [ $(command -v neofetch) ]; then
     neofetch
 fi
-
-# Load the Rust toolchain into PATH
-PATH="$HOME/.cargo/env:$PATH"
-PATH="$HOME/.local/bin:$PATH"

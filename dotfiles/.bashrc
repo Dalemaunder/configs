@@ -15,7 +15,7 @@ alias frep="grep -F"
 
 # Exports:
 # Set vim to always be the default editor
-export EDITOR="vim" 
+export EDITOR="nvim" 
 # Proper terminal colours
 export TERM=xterm-256color
 
@@ -31,3 +31,19 @@ fi
 if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
+
+
+# Load programming toolchains into PATH
+# Rust
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/.local/bin:$PATH"
+# Zig
+PATH="$HOME/.zig/:$PATH"
+
+# I don't remember what these are; Commenting out until something yells at me.
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Load the Applications directory into the path; Used for appimages, etc.
+PATH="$HOME/Applications:$PATH"
