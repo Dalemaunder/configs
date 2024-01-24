@@ -23,9 +23,19 @@ fi
 
 # Create links of the dotfiles in their correct locations (Create parent folders if they don't exist).
 # Vim
-ln -s "./dotfiles/.vimrc" "$HOME/.vimrc"
-# Bash
+if [ -f "$HOME/.vimrc" ]; then
+    read -rp "A .vimrc file already exists; Would you like to overwrite it? [y/n]: " confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	rm "$HOME/.vimrc"
+	ln "./dotfiles/.vimrc" "$HOME/.vimrc"
+    else
+	echo "Leaving the pre-existing .vimrc alone."
+    fi
+else
+    ln "./dotfiles/.vimrc" "$HOME/.vimrc"
+fi
 
+# Bash
 if [ -f "$HOME/.bashrc" ]; then
     # .bashrc files are sacred; Don't bloody touch them without explicit permission.
     # If this script is being used, it's likely that the pre-existing .bashrc is just the distro default.
@@ -40,19 +50,53 @@ else
     ln "./dotfiles/.bashrc" "$HOME/.bashrc"
 fi
 
-ln "./dotfiles/.bash_profile" "$HOME/.bash_profile"
-ln "./dotfiles/.ps1_prompt" "$HOME/.ps1_prompt"
+if [ -f "$HOME/.bash_profile" ]; then
+    read -rp "A .bash_profile file already exists; Would you like to overwrite it? [y/n]: " confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	rm "$HOME/.bash_profile"
+	ln "./dotfiles/.bash_profile" "$HOME/.bash_profile"
+    else
+	echo "Leaving the pre-existing .bash_profile alone."
+    fi
+else
+    ln "./dotfiles/.bash_profile" "$HOME/.bash_profile"
+fi
+
+if [ -f "$HOME/.ps1_prompt" ]; then
+    read -rp "A .ps1_prompt file already exists; Would you like to overwrite it? [y/n]: " confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	rm "$HOME/.ps1_prompt"
+	ln "./dotfiles/.ps1_prompt" "$HOME/.ps1_prompt"
+    else
+	echo "Leaving the pre-existing .ps1_prompt alone."
+    fi
+else
+    ln "./dotfiles/.ps1_prompt" "$HOME/.ps1_prompt"
+fi
+
+
 # Htop
 if [ ! -d "$HOME/.config/htop" ]; then
   mkdir "$HOME/.config/htop";
 fi
-ln "./dotfiles/.htoprc" "$HOME/.config/htop/htoprc"
+if [ -f "$HOME/.htoprc" ]; then
+    read -rp "A .htoprc file already exists; Would you like to overwrite it? [y/n]: " confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	rm "$HOME/.config/htop/htoprc"
+	ln "./dotfiles/.htoprc" "$HOME/.htoprc"
+    else
+	echo "Leaving the pre-existing .htoprc alone."
+    fi
+else
+    ln "./dotfiles/.htoprc" "$HOME/.config/htop/htoprc"
+fi
+
 
 
 # Install NeoVim (If not already present)
 # Clone the config repo
 if [ ! -d "$HOME/.config/nvim" ]; then
-    git clone https://github.com/Dalemaunder/nvim.git "$HOME/.config/"
+    git clone https://github.com/Dalemaunder/nvim.git "$HOME/.config/nvim"
 fi
 
 # Download the latest version of the nvim appimage
