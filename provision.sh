@@ -70,6 +70,4 @@ echo "Installing the appimage..."
 mv "nvim.appimage" "$HOME/Applications/nvim"
 chmod +x "$HOME/Applications/nvim"
 
-source "$HOME/.bash_profile"
-
-echo "Done."
+echo "Done. Remember to run \"source $HOME/.bash_profile\" for the current shell session."
