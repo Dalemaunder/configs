@@ -92,6 +92,51 @@ else
 fi
 
 
+# Sway
+if [ ! -d "$HOME/.config/sway" ]; then
+  mkdir "$HOME/.config/sway";
+fi
+
+if [ -f "$HOME/.config/sway/config" ]; then
+    read -rp "A sway config file already exists; Would you like to overwrite it? [y/n]: " confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	rm "$HOME/.config/sway/config"
+	ln "./dotfiles/sway/config" "$HOME/.config/sway/config"
+    else
+	echo "Leaving the pre-existing sway config alone."
+    fi
+else
+    ln "./dotfiles/sway/config" "$HOME/.config/sway/config"
+fi
+
+# Waybar
+if [ ! -d "$HOME/.config/waybar" ]; then
+  mkdir "$HOME/.config/waybar";
+fi
+if [ -f "$HOME/.config/waybar/config" ]; then
+    read -rp "A waybar config file already exists; Would you like to overwrite it? [y/n]: " confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	rm "$HOME/.config/waybar/config"
+	ln "./dotfiles/waybar/config" "$HOME/.config/waybar/config"
+    else
+	echo "Leaving the pre-existing waybar config alone."
+    fi
+else
+    ln "./dotfiles/waybar/config" "$HOME/.config/waybar/config"
+fi
+
+if [ -f "$HOME/.config/waybar/styles.css" ]; then
+    read -rp "A waybar styles file already exists; Would you like to overwrite it? [y/n]: " confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	rm "$HOME/.config/waybar/styles.css"
+	ln "./dotfiles/waybar/styles.css" "$HOME/.config/waybar/styles.css"
+    else
+	echo "Leaving the pre-existing waybar styles.css alone."
+    fi
+else
+    ln "./dotfiles/waybar/styles.css" "$HOME/.config/waybar/styles.css"
+fi
+
 
 # Install NeoVim (If not already present)
 # Clone the config repo
