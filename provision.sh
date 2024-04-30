@@ -50,19 +50,19 @@ else
     ln "./dotfiles/bash/.bashrc" "$HOME/.config/.bashrc"
 fi
 
-if [ -f "$HOME/.bash_profile" ]; then
+if [ -f "$HOME/.config/.bash_profile" ]; then
     read -rp "A .bash_profile file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	rm "$HOME/.bash_profile"
-	ln "./dotfiles/.bash_profile" "$HOME/.bash_profile"
+	ln "./dotfiles/bash/.bash_profile" "$HOME/.config/.bash_profile"
     else
 	echo "Leaving the pre-existing .bash_profile alone."
     fi
 else
-    ln "./dotfiles/.bash_profile" "$HOME/.bash_profile"
+    ln "./dotfiles/bash/.bash_profile" "$HOME/.config/.bash_profile"
 fi
 
-if [ -f "$HOME/.ps1_prompt" ]; then
+if [ -f "$HOME/.config/.ps1_prompt" ]; then
     read -rp "A .ps1_prompt file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	rm "$HOME/.config/.ps1_prompt"
@@ -125,16 +125,16 @@ else
     ln "./dotfiles/waybar/config" "$HOME/.config/waybar/config"
 fi
 
-if [ -f "$HOME/.config/waybar/styles.css" ]; then
-    read -rp "A waybar styles file already exists; Would you like to overwrite it? [y/n]: " confirm 
+if [ -f "$HOME/.config/waybar/style.css" ]; then
+    read -rp "A waybar style file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-	rm "$HOME/.config/waybar/styles.css"
-	ln "./dotfiles/waybar/styles.css" "$HOME/.config/waybar/styles.css"
+	rm "$HOME/.config/waybar/style.css"
+	ln "./dotfiles/waybar/style.css" "$HOME/.config/waybar/styles.css"
     else
-	echo "Leaving the pre-existing waybar styles.css alone."
+	echo "Leaving the pre-existing waybar style.css alone."
     fi
 else
-    ln "./dotfiles/waybar/styles.css" "$HOME/.config/waybar/styles.css"
+    ln "./dotfiles/waybar/style.css" "$HOME/.config/waybar/style.css"
 fi
 
 
