@@ -23,31 +23,31 @@ fi
 
 # Create links of the dotfiles in their correct locations (Create parent folders if they don't exist).
 # Vim
-if [ -f "$HOME/.vimrc" ]; then
+if [ -f "$HOME/.config/.vimrc" ]; then
     read -rp "A .vimrc file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-	rm "$HOME/.vimrc"
-	ln "./dotfiles/.vimrc" "$HOME/.vimrc"
+	rm "$HOME/.config/.vimrc"
+	ln "./dotfiles/vim/.vimrc" "$HOME/.config/.vimrc"
     else
 	echo "Leaving the pre-existing .vimrc alone."
     fi
 else
-    ln "./dotfiles/.vimrc" "$HOME/.vimrc"
+    ln "./dotfiles/vim/.vimrc" "$HOME/.config/.vimrc"
 fi
 
 # Bash
-if [ -f "$HOME/.bashrc" ]; then
+if [ -f "$HOME/.config/.bashrc" ]; then
     # .bashrc files are sacred; Don't bloody touch them without explicit permission.
     # If this script is being used, it's likely that the pre-existing .bashrc is just the distro default.
     read -rp "A .bashrc file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-	rm "$HOME/.bashrc"
-	ln "./dotfiles/.bashrc" "$HOME/.bashrc"
+	rm "$HOME/.config/.bashrc"
+	ln "./dotfiles/bash/.bashrc" "$HOME/.config/.bashrc"
     else
 	echo "Leaving the pre-existing .bashrc alone."
     fi
 else
-    ln "./dotfiles/.bashrc" "$HOME/.bashrc"
+    ln "./dotfiles/bash/.bashrc" "$HOME/.config/.bashrc"
 fi
 
 if [ -f "$HOME/.bash_profile" ]; then
@@ -65,13 +65,13 @@ fi
 if [ -f "$HOME/.ps1_prompt" ]; then
     read -rp "A .ps1_prompt file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
-	rm "$HOME/.ps1_prompt"
-	ln "./dotfiles/.ps1_prompt" "$HOME/.ps1_prompt"
+	rm "$HOME/.config/.ps1_prompt"
+	ln "./dotfiles/bash/.ps1_prompt" "$HOME/.config/.ps1_prompt"
     else
 	echo "Leaving the pre-existing .ps1_prompt alone."
     fi
 else
-    ln "./dotfiles/.ps1_prompt" "$HOME/.ps1_prompt"
+    ln "./dotfiles/bash/.ps1_prompt" "$HOME/.config/.ps1_prompt"
 fi
 
 
@@ -83,12 +83,12 @@ if [ -f "$HOME/.config/htop/htoprc" ]; then
     read -rp "A htoprc file already exists; Would you like to overwrite it? [y/n]: " confirm 
     if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
 	rm "$HOME/.config/htop/htoprc"
-	ln "./dotfiles/.htoprc" "$HOME/.config/htop/htoprc"
+	ln "./dotfiles/htop/.htoprc" "$HOME/.config/htop/htoprc"
     else
 	echo "Leaving the pre-existing .htoprc alone."
     fi
 else
-    ln "./dotfiles/.htoprc" "$HOME/.config/htop/htoprc"
+    ln "./dotfiles/htop/.htoprc" "$HOME/.config/htop/htoprc"
 fi
 
 

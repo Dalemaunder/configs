@@ -25,3 +25,11 @@ read -rp "Would you like to install desirable optional packages? [y/n]" confirm
 	echo "Skipping non-mandatory packages."
     fi
 
+
+echo -e "\n"
+read -rp "Would you like to install the sway wm? [y/n]" confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	apt-get install sway swaylock swayidle waybar -y
+    else
+	echo "Skipping sway installation."
+    fi
