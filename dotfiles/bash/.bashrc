@@ -39,3 +39,4 @@ PATH="$HOME/.zig/:$PATH"
 
 # Load the Applications directory into the path; Used for appimages, etc.
 PATH="$HOME/Applications:$PATH"
+. "$HOME/.cargo/env"

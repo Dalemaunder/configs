@@ -30,3 +30,4 @@ export TERM=xterm-256color
 
 # Remove duplicates from bash history.
 export HISTCONTROL=ignoreboth:erasedups
+. "$HOME/.cargo/env"

@@ -34,3 +34,12 @@ read -rp "Would you like to install the sway wm? [y/n]" confirm
     else
 	echo "Skipping sway installation."
     fi
+
+
+echo -e "\n"
+read -rp "Would you like to install Rustlang? [y/n]" confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    else
+	echo "Skipping Rust installation."
+    fi

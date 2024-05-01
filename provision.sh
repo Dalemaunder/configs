@@ -146,18 +146,33 @@ if [ ! -d "$HOME/.config/nvim" ]; then
 fi
 
 # Download the latest version of the nvim appimage
-echo "Attempting to download the latest NeoVim version..."
-REPO="neovim/neovim"; \
-    curl -s https://api.github.com/repos/${REPO}/releases/latest | grep "browser_download_url.*.appimage\"" \
-    | head -1 \
-    | cut -d : -f 2,3 \
-    | tr -d \" \
-    | wget --show-progress -qi - \
-    || echo "-> Could not download the latest version of '${REPO}' for your architecture."
+echo -e "\n"
+read -rp "Would you like to install Neovim? [y/n]" confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	echo "Attempting to download the latest NeoVim version..."
+	REPO="neovim/neovim"; \
+	    curl -s https://api.github.com/repos/${REPO}/releases/latest | grep "browser_download_url.*.appimage\"" \
+	    | head -1 \
+	    | cut -d : -f 2,3 \
+	    | tr -d \" \
+	    | wget --show-progress -qi - \
+	    || echo "-> Could not download the latest version of '${REPO}' for your architecture."
 
-# Move the appimage to the user's home Applications folder and make it executable.
-echo "Installing the appimage..."
-mv "nvim.appimage" "$HOME/Applications/nvim"
-chmod +x "$HOME/Applications/nvim"
+	# Move the appimage to the user's home Applications folder and make it executable.
+	echo "Installing the appimage..."
+	mv "nvim.appimage" "$HOME/Applications/nvim"
+	chmod +x "$HOME/Applications/nvim"
+    else
+	echo "Skipping Neovim installation."
+    fi
 
-echo "Done. Remember to run \"source $HOME/.bash_profile\" for the current shell session."
+
+echo -e "\n"
+read -rp "Would you like to install Rustlang? [y/n]" confirm 
+    if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    else
+	echo "Skipping Rust installation."
+    fi
+
+echo -e "\nDone. Remember to run \"source $HOME/.bash_profile\" for the current shell session."
